@@ -9,15 +9,18 @@ public class Task {
         count++;
     }
 
+    public String getCompletionStatusIcon() {
+        return (completed ? "[X]" : "[ ]");
+    }
+
+    public String getTask() {
+        return task;
+    }
+
     @Override
     public String toString() {
-        String completionSymbol;
-        if (completed == false) {
-            completionSymbol = "[ ]";
-        } else {
-            completionSymbol = "[X]";
-        }
-        return completionSymbol +" " + task;
+        String completionSymbol = this.getCompletionStatusIcon();
+        return completionSymbol + " " + task;
     }
 
     public boolean isCompleted() {
