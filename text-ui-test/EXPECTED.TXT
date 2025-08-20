@@ -1,7 +1,35 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Hello! I'm Mip
+What can I do for you?
 
+
+Understood, I've added this task:
+[T][ ] eat a burger
+The number of your tasks is: 1
+
+Understood, I've added this task:
+[E][ ] lunch meeting (from: 4pm to: 8pm)
+The number of your tasks is: 2
+
+Understood, I've added this task:
+[D][ ] return disc (by: friday)
+The number of your tasks is: 3
+
+1.[T][ ] eat a burger
+2.[E][ ] lunch meeting (from: 4pm to: 8pm)
+3.[D][ ] return disc (by: friday)
+
+Super amazing!!! I've marked this task as done:
+[E][X] lunch meeting (from: 4pm to: 8pm)
+
+1.[T][ ] eat a burger
+2.[E][X] lunch meeting (from: 4pm to: 8pm)
+3.[D][ ] return disc (by: friday)
+
+I've marked this task as not done:
+[E][ ] lunch meeting (from: 4pm to: 8pm)
+
+1.[T][ ] eat a burger
+2.[E][ ] lunch meeting (from: 4pm to: 8pm)
+3.[D][ ] return disc (by: friday)
+
+Goodbye! Mip WILL see you again.

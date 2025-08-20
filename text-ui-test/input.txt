@@ -1,0 +1,10 @@
+list
+todo eat a burger
+event lunch meeting /from 4pm /to 8pm
+deadline return disc /by friday
+list
+mark 2
+list
+unmark 2
+list
+bye
