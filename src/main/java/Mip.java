@@ -2,18 +2,42 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Mip {
-    public static void main(String[] args) {
-        System.out.println("Hello! I'm Mip\nWhat can I do for you?\n");
+    private static Scanner input = new Scanner(System.in);
+    private static ArrayList<Task> tasks = new ArrayList<>();
+    private static String command;
 
-        ArrayList<Task> tasks = new ArrayList<>();
-        String command;
-        Scanner input = new Scanner(System.in);
+    private static void greet() {
+        System.out.println("Hello! I'm Mip\nWhat can I do for you?\n");
+    }
+
+    private static void sayGoodbye() {
+        System.out.println("Goodbye! Mip WILL see you again.");
+    }
+
+    private static void markTask(int number) {
+        tasks.get(number - 1).setCompleted(true);
+    }
+
+    private static void unmarkTask(int number) {
+        tasks.get(number - 1).setCompleted(false);
+    }
+
+    private static Task deleteTask(int number) {
+        return tasks.remove(number - 1);
+    }
+
+    private static void printTask(int number) {
+        System.out.println(tasks.get(number - 1));
+    }
+
+    public static void main(String[] args) {
+        greet();
 
         while (true) {
             try {
                 command = input.nextLine();
                 if (command.equals("bye")) {
-                    System.out.println("Goodbye! Mip WILL see you again.");
+                    sayGoodbye();
                     break;
                 } else if (command.equals("list")) { // List out all previous commands
                     if (tasks.isEmpty()) {
@@ -26,15 +50,17 @@ public class Mip {
                 } else if (command.matches("mark \\d+")) {
                     String numberPart = command.replaceAll("\\D+", "");
                     int number = Integer.parseInt(numberPart);
-                    tasks.get(number - 1).setCompleted(true);
+                    markTask(number);
                     System.out.println("Super amazing!!! I've marked this task as done:");
-                    System.out.println(tasks.get(number - 1) + "\n");
+                    printTask(number);
+                    System.out.println();
                 } else if (command.matches("unmark \\d+")) {
                     String numberPart = command.replaceAll("\\D+", "");
                     int number = Integer.parseInt(numberPart);
-                    tasks.get(number - 1).setCompleted(false);
+                    unmarkTask(number);
                     System.out.println("I've marked this task as not done:");
-                    System.out.println(tasks.get(number - 1) + "\n");
+                    printTask(number);
+                    System.out.println();
                 } else if (command.isEmpty()) {
                     continue;
                 } else if (command.startsWith("todo")) {
@@ -106,7 +132,7 @@ public class Mip {
                     String numberPart = command.replaceAll("\\D+", "");
                     int number = Integer.parseInt(numberPart);
                     System.out.println("I have deleted this task:");
-                    System.out.println(tasks.remove(number - 1) + "\n");
+                    System.out.println(deleteTask(number) + "\n");
                 } else {
                     throw new MipException("I have no idea what you are talking about...");
                 }
