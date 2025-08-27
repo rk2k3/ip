@@ -1,10 +1,15 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 
 public class Mip {
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<Task> tasks = new ArrayList<>();
     private static String command;
+    private static File storage;
 
     private static void greet() {
         System.out.println("Hello! I'm Mip\nWhat can I do for you?\n");
@@ -30,7 +35,113 @@ public class Mip {
         System.out.println(tasks.get(number - 1));
     }
 
+    public static void initStorage() {
+        File f = new File("data/Mip.txt");
+
+        // Ensure the parent directory exists
+        File parentDir = f.getParentFile();
+        if (!parentDir.exists()) {
+            if (parentDir.mkdirs()) {
+                System.out.println("Created directory: " + parentDir);
+            } else {
+                System.out.println("Failed to create directory: " + parentDir);
+            }
+        }
+
+        // Ensure the file exists
+        if (!f.exists()) {
+            try {
+                if (f.createNewFile()) {
+                    System.out.println("Created file: " + f);
+                } else {
+                    System.out.println("Failed to create file: " + f);
+                }
+            } catch (IOException e) {
+                System.out.println("Error creating file: " + e.getMessage());
+            }
+        } else {
+            System.out.println("File already exists: " + f);
+        }
+
+        storage = f;
+    }
+
+    private static void initTasks() {
+        if (storage == null) {
+            initStorage();
+        }
+
+        try (Scanner sc = new Scanner(storage)) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine().trim();
+                if (line.isEmpty()) continue;
+
+                String[] parts = line.split("\\|");
+                if (parts.length < 3) continue; // skip invalid lines
+
+                String type = parts[0].trim();
+                boolean isDone = parts[1].trim().equals("1");
+                String description = parts[2].trim();
+
+                Task task = null;
+
+                switch (type) {
+                case "T":
+                    task = new TodoTask(description);
+                    break;
+                case "D":
+                    String deadline = parts.length > 3 ? parts[3].trim() : "";
+                    task = new DeadlineTask(description, deadline);
+                    break;
+                case "E":
+                    String from = parts.length > 3 ? parts[3].trim() : "";
+                    String to = parts.length > 4 ? parts[4].trim() : "";
+                    task = new EventTask(description, from, to);
+                    break;
+                default:
+                    System.out.println("Unknown task type: " + type);
+                }
+
+                if (task != null) {
+                    task.setCompleted(isDone);
+                    tasks.add(task);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Failed to read storage file: " + e.getMessage());
+        }
+    }
+
+    private static void saveTasks() {
+        if (storage == null) {
+            System.out.println("Storage file not initialized!");
+            return;
+        }
+
+        try (FileWriter writer = new FileWriter(storage, false)) { // overwrite file
+            for (Task t : tasks) {
+                String line = "";
+
+                if (t instanceof TodoTask) {
+                    line = String.format("T | %d | %s", t.isCompleted() ? 1 : 0, t.getTask());
+                } else if (t instanceof DeadlineTask) {
+                    DeadlineTask dt = (DeadlineTask) t;
+                    line = String.format("D | %d | %s | %s", dt.isCompleted() ? 1 : 0, dt.getTask(), dt.getDeadline());
+                } else if (t instanceof EventTask) {
+                    EventTask et = (EventTask) t;
+                    line = String.format("E | %d | %s | %s | %s", et.isCompleted() ? 1 : 0,
+                            et.getTask(), et.getFrom(), et.getTo());
+                }
+
+                writer.write(line + System.lineSeparator());
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving tasks: " + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
+        initTasks();
         greet();
 
         while (true) {
@@ -138,6 +249,8 @@ public class Mip {
                 }
             } catch (MipException e) {
                 System.out.println(e.getMessage() + "\n");
+            } finally {
+                saveTasks();
             }
         }
     }
