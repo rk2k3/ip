@@ -1,6 +1,0 @@
-T | 1 | eat chicken
-D | 0 | return book | null
-E | 1 | project meeting | Mon | tues
-T | 0 | eat burger
-D | 0 | eat burger | 2/12/2019 1800
-D | 1 | eat chicken | 2/12/2019
