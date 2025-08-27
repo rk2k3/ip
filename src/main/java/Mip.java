@@ -41,9 +41,7 @@ public class Mip {
         // Ensure the parent directory exists
         File parentDir = f.getParentFile();
         if (!parentDir.exists()) {
-            if (parentDir.mkdirs()) {
-                System.out.println("Created directory: " + parentDir);
-            } else {
+            if (!parentDir.mkdirs()) {
                 System.out.println("Failed to create directory: " + parentDir);
             }
         }
@@ -51,16 +49,10 @@ public class Mip {
         // Ensure the file exists
         if (!f.exists()) {
             try {
-                if (f.createNewFile()) {
-                    System.out.println("Created file: " + f);
-                } else {
-                    System.out.println("Failed to create file: " + f);
-                }
+                f.createNewFile();
             } catch (IOException e) {
                 System.out.println("Error creating file: " + e.getMessage());
             }
-        } else {
-            System.out.println("File already exists: " + f);
         }
 
         storage = f;
