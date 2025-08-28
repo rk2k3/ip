@@ -19,6 +19,7 @@ public class Storage {
     public Storage(String path) {
         this.file = new File(path);
         File parentDir = this.file.getParentFile();
+
         if (!parentDir.exists()) {
             if (!parentDir.mkdirs()) {
                 System.out.println("Failed to create directory: " + parentDir);
@@ -52,20 +53,20 @@ public class Storage {
                 Task task = null;
 
                 switch (type) {
-                    case "T":
-                        task = new TodoTask(description);
-                        break;
-                    case "D":
-                        String deadline = parts.length > 3 ? parts[3].trim() : "";
-                        task = new DeadlineTask(description, deadline);
-                        break;
-                    case "E":
-                        String from = parts.length > 3 ? parts[3].trim() : "";
-                        String to = parts.length > 4 ? parts[4].trim() : "";
-                        task = new EventTask(description, from, to);
-                        break;
-                    default:
-                        System.out.println("Unknown task type: " + type);
+                case "T":
+                    task = new TodoTask(description);
+                    break;
+                case "D":
+                    String deadline = parts.length > 3 ? parts[3].trim() : "";
+                    task = new DeadlineTask(description, deadline);
+                    break;
+                case "E":
+                    String from = parts.length > 3 ? parts[3].trim() : "";
+                    String to = parts.length > 4 ? parts[4].trim() : "";
+                    task = new EventTask(description, from, to);
+                    break;
+                default:
+                    System.out.println("Unknown task type: " + type);
                 }
 
                 if (task != null) {

@@ -80,6 +80,7 @@ public class Mip {
                 } else if (command.matches("delete \\d+")) {
                     int number = Parser.getNumber(command);
                     Task deletedTask = tasks.deleteTask(number);
+
                     ui.showTaskDeleted(deletedTask);
                     System.out.println();
                 } else {

@@ -48,6 +48,7 @@ public class Parser {
 
     private static String[] splitEventCommand(String command) throws MipException {
         String rest = command.substring(6).trim(); // skip "event "
+
         if (rest.isEmpty()) {
             throw new MipException("The description of an event cannot be empty.");
         }
