@@ -1,6 +1,8 @@
 package mip.task;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskList {
     private ArrayList<Task> tasks;
@@ -23,6 +25,14 @@ public class TaskList {
 
     public Task deleteTask(int number) {
         return tasks.remove(number - 1);
+    }
+
+    public List<Task> filterTasksBy(String desc) {
+        List<Task> filtered = tasks.stream()
+                .filter(task -> task.getTask().contains(desc))
+                .collect(Collectors.toList());
+
+        return filtered;
     }
 
     public void addTask(Task task) {

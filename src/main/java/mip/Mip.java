@@ -82,6 +82,10 @@ public class Mip {
                     Task deletedTask = tasks.deleteTask(number);
                     ui.showTaskDeleted(deletedTask);
                     System.out.println();
+                } else if (command.startsWith("find")) {
+                    String filter = Parser.getFindFilter(command);
+                    ui.showTasks(tasks.filterTasksBy(filter));
+                    System.out.println();
                 } else {
                     throw new MipException("I have no idea what you are talking about...");
                 }

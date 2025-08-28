@@ -4,6 +4,7 @@ import mip.task.Task;
 import mip.task.TaskList;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -57,6 +58,12 @@ public class Ui {
         ArrayList<Task> list = tasks.getTasks();
         for (int i = 0; i < list.size(); i++) {
             System.out.println((i + 1) + "." + list.get(i));
+        }
+    }
+
+    public void showTasks(List<Task> tasks) {
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + "." + tasks.get(i));
         }
     }
 

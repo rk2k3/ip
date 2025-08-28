@@ -1,6 +1,12 @@
 package mip;
 
 public class Parser {
+
+    public static String getFindFilter(String command) {
+        String rest = command.substring(5);
+        return rest;
+    }
+
     public static int getNumber(String command) {
         String numberPart = command.replaceAll("\\D+", "");
         int number = Integer.parseInt(numberPart);
