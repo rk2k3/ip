@@ -11,6 +11,11 @@ public class Mip {
     private Storage storage;
     private TaskList tasks;
 
+    /**
+     * Constructor for Mip, initialises with a string filepath to storage.
+     *
+     * @param filePath filepath to storage file location.
+     */
     public Mip(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);

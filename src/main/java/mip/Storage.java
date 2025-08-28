@@ -16,6 +16,11 @@ import java.util.Scanner;
 public class Storage {
     private File file;
 
+    /**
+     * constructor to initialise Storage object with a file specified by its path
+     *
+     * @param path path to intended storage file
+     */
     public Storage(String path) {
         this.file = new File(path);
         File parentDir = this.file.getParentFile();
@@ -35,6 +40,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Returns arraylist of task contained within storage file
+     *
+     * @return stored arraylist of tasks
+     * @throws MipException file is not found
+     */
     public ArrayList<Task> load() throws MipException {
         try (Scanner sc = new Scanner(file)) {
             ArrayList<Task> tasks = new ArrayList<>();
@@ -79,6 +90,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Rewrites storage file to contain entirely new set of tasks specified by tasklist parameter
+     *
+     * @param tasks from running mip instance
+     */
     public void saveTasks(TaskList tasks) {
         if (this.file == null) {
             System.out.println("Storage file not initialized!");

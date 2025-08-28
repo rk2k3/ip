@@ -1,30 +1,60 @@
 package mip.task;
 
+import mip.MipException;
+
 import java.util.ArrayList;
 
 public class TaskList {
     private ArrayList<Task> tasks;
 
+    /**
+     * constructor that initialises tasklist with an arraylist of tasks
+     *
+     * @param tasks arraylist of tasks
+     */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
+    /**
+     * empty constructor that initialises tasklist empty arraylist of tasks
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
 
+    /**
+     * marks the task at the specified index as completed
+     *
+     * @param number index of task to mark as completed
+     */
     public void markTask(int number) {
         tasks.get(number - 1).setCompleted(true);
     }
 
+    /**
+     * marks the task at the specified index as not completed
+     *
+     * @param number index of task to mark as not completed
+     */
     public void unmarkTask(int number) {
         tasks.get(number - 1).setCompleted(false);
     }
 
+    /**
+     * deletes the task from the list at the specified index
+     *
+     * @param number index of task to delete
+     */
     public Task deleteTask(int number) {
         return tasks.remove(number - 1);
     }
 
+    /**
+     * adds a task to the list
+     *
+     * @param task to add to list
+     */
     public void addTask(Task task) {
         tasks.add(task);
     }
