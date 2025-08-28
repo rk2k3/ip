@@ -3,6 +3,8 @@ package mip.task;
 import mip.MipException;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TaskList {
     private ArrayList<Task> tasks;
@@ -57,6 +59,14 @@ public class TaskList {
      */
     public void addTask(Task task) {
         tasks.add(task);
+    }
+
+    public List<Task> filterTasksBy(String desc) {
+        List<Task> filtered = tasks.stream()
+                .filter(task -> task.getTask().contains(desc))
+                .collect(Collectors.toList());
+
+        return filtered;
     }
 
     public ArrayList<Task> getTasks() {

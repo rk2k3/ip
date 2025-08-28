@@ -1,7 +1,7 @@
 package mip;
 
 public class Parser {
-
+    
     /**
      * Extracts singular number from a command and returns the int value.
      *
@@ -14,6 +14,11 @@ public class Parser {
         return number;
     }
 
+    public static String getFindFilter(String command) {
+        String rest = command.substring(5);
+        return rest;
+    }
+    
     /**
      * Returns description from command that starts with "todo "
      *
