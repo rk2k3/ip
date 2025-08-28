@@ -1,3 +1,8 @@
+package mip;
+
+import mip.task.Task;
+import mip.task.TaskList;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -1,3 +1,11 @@
+package mip;
+
+import mip.task.DeadlineTask;
+import mip.task.EventTask;
+import mip.task.Task;
+import mip.task.TaskList;
+import mip.task.TodoTask;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

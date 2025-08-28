@@ -1,3 +1,5 @@
+package mip.task;
+
 public class Task {
     private boolean completed = false;
     private String task;

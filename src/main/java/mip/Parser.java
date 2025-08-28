@@ -1,3 +1,5 @@
+package mip;
+
 public class Parser {
     public static int getNumber(String command) {
         String numberPart = command.replaceAll("\\D+", "");

@@ -1,3 +1,11 @@
+package mip;
+
+import mip.task.DeadlineTask;
+import mip.task.EventTask;
+import mip.task.TaskList;
+import mip.task.TodoTask;
+import mip.task.Task;
+
 public class Mip {
     private Ui ui;
     private Storage storage;

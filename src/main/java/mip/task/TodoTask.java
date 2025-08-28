@@ -1,3 +1,5 @@
+package mip.task;
+
 public class TodoTask extends Task {
     public TodoTask(String task) {
         super(task);
