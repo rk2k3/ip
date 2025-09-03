@@ -1,4 +1,4 @@
-package mip;
+package com.mipper.model.mip;
 
 public class Parser {
     

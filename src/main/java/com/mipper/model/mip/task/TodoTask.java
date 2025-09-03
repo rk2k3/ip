@@ -1,4 +1,4 @@
-package mip.task;
+package com.mipper.model.mip.task;
 
 public class TodoTask extends Task {
     public TodoTask(String task) {

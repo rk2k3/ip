@@ -1,6 +1,4 @@
-package mip.task;
-
-import mip.MipException;
+package com.mipper.model.mip.task;
 
 import java.util.ArrayList;
 import java.util.List;

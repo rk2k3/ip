@@ -1,4 +1,4 @@
-package mip.task;
+package com.mipper.model.mip.task;
 
 public class Task {
     private boolean completed = false;

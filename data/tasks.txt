@@ -1,3 +1,4 @@
 T | 0 | eat burger
 T | 0 | do something
 T | 0 | chicken burger
+T | 1 | do something

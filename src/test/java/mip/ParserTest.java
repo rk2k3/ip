@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import com.mipper.model.mip.MipException;
+import com.mipper.model.mip.Parser;
+
 public class ParserTest {
 
     @Test

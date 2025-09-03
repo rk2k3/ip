@@ -1,10 +1,10 @@
-package mip;
+package com.mipper.model.mip;
 
-import mip.task.DeadlineTask;
-import mip.task.EventTask;
-import mip.task.Task;
-import mip.task.TaskList;
-import mip.task.TodoTask;
+import com.mipper.model.mip.task.DeadlineTask;
+import com.mipper.model.mip.task.EventTask;
+import com.mipper.model.mip.task.Task;
+import com.mipper.model.mip.task.TaskList;
+import com.mipper.model.mip.task.TodoTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;

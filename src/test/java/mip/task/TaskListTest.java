@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.mipper.model.mip.task.Task;
+import com.mipper.model.mip.task.TaskList;
+
 public class TaskListTest {
 
     @Test
