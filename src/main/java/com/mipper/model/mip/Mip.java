@@ -31,6 +31,10 @@ public class Mip {
         this("data/tasks.txt"); // Default filepath for empty constructor
     }
 
+    public String greeting() {
+        return ui.greeting();
+    }
+
     public String getResponse(String input) {
         try {
             if (input.equals("bye")) {

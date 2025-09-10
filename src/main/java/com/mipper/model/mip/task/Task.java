@@ -36,4 +36,21 @@ public class Task {
     public static int getCount() {
         return count;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        if (this.toString().equals(o.toString())) {
+            return true;
+        }
+
+        return false;
+    }
 }
