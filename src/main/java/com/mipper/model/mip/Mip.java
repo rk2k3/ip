@@ -28,7 +28,7 @@ public class Mip {
     }
 
     public Mip() {
-        this("data/tasks.txt");
+        this("data/tasks.txt"); // Default filepath for empty constructor
     }
 
     public String getResponse(String input) {

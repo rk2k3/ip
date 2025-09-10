@@ -52,17 +52,22 @@ public class Storage {
             ArrayList<Task> tasks = new ArrayList<>();
             while (sc.hasNextLine()) {
                 String line = sc.nextLine().trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty()) {
+                    continue;
+                }
 
                 String[] parts = line.split("\\|");
-                if (parts.length < 3) continue; // skip invalid lines
+                if (parts.length < 3) {
+                    continue; // skip invalid lines
+                }
 
+                // Extract different components of the line
                 String type = parts[0].trim();
                 boolean isDone = parts[1].trim().equals("1");
                 String description = parts[2].trim();
-
                 Task task = null;
 
+                // Creates different task objects depending on type
                 switch (type) {
                 case "T":
                     task = new TodoTask(description);
@@ -118,6 +123,7 @@ public class Storage {
                             et.getTask(), et.getFrom(), et.getTo());
                 }
 
+                // Writes the line into the file and add a line separator
                 writer.write(line + System.lineSeparator());
             }
         } catch (IOException e) {
