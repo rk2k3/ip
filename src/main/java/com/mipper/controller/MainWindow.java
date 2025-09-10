@@ -36,6 +36,12 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
+    public void greetUser() {
+        dialogContainer.getChildren().add(
+                DialogBox.getDukeDialog(mip.greeting(), dukeImage)
+        );
+    }
+
     /** Injects the Duke instance */
     public void setMip(Mip m) {
         this.mip = m;

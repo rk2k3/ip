@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.mipper.model.mip.MipException;
+
 public class TaskList {
     private ArrayList<Task> tasks;
 
@@ -54,8 +56,15 @@ public class TaskList {
      * adds a task to the list
      *
      * @param task to add to list
+     * @return returns true if task is successfully added
      */
-    public void addTask(Task task) {
+    public void addTask(Task task) throws MipException {
+        for (Task t : tasks) {
+            if (task.equals(t)) {
+                throw new MipException("Task already exists, aborting...");
+            }
+        }
+
         tasks.add(task);
     }
 
