@@ -9,8 +9,11 @@ public class Parser {
      * @return single number contained within command
      */
     public static int getNumber(String command) {
+        assert command != null && !command.isEmpty() : "Command should not be null or empty";
         String numberPart = command.replaceAll("\\D+", "");
+        assert !numberPart.isEmpty() : "Command should contain at least one number";
         int number = Integer.parseInt(numberPart);
+        assert number >= 0 : "Parsed number should be non-negative";
         return number;
     }
 
