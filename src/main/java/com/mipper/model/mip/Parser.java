@@ -53,6 +53,7 @@ public class Parser {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new MipException("A deadline must have '/by' followed by a time.");
         }
+
         String description = parts[0];
         return description;
     }
@@ -77,6 +78,7 @@ public class Parser {
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             throw new MipException("A deadline must have '/by' followed by a time.");
         }
+
         String due = parts[1];
         return due;
     }
