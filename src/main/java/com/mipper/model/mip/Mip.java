@@ -35,56 +35,71 @@ public class Mip {
         return ui.greeting();
     }
 
+    // Used Chatgpt to refactor to use switch statements instead of if-else
     public String getResponse(String input) {
+        Parser.CommandType command = Parser.getCommandType(input);
         try {
-            if (input.equals("bye")) {
+            switch (command) {
+            case BYE:
                 return ui.farewell();
-            } else if (input.equals("list")) { // List out all previous commands
+
+            case LIST:
                 return ui.listTasksMessage(tasks);
-            } else if (input.matches("mark \\d+")) {
+
+            case MARK: {
                 int number = Parser.getNumber(input);
                 tasks.markTask(number);
                 return ui.taskMarkedMessage(tasks.getTask(number));
-            } else if (input.matches("unmark \\d+")) {
+            }
+
+            case UNMARK: {
                 int number = Parser.getNumber(input);
                 tasks.unmarkTask(number);
                 return ui.taskUnmarkedMessage(tasks.getTask(number));
-            } else if (input.isEmpty()) {
-                return ui.emptyInputMessage();
-            } else if (input.startsWith("todo")) {
-                String description = Parser.getTodoDescription(input);
+            }
 
+            case EMPTY:
+                return ui.emptyInputMessage();
+
+            case TODO: {
+                String description = Parser.getTodoDescription(input);
                 if (description.isEmpty()) {
                     throw new MipException("The description of a todo cannot be empty.");
                 }
-
                 TodoTask todoTask = new TodoTask(description);
                 tasks.addTask(todoTask);
-
                 return ui.taskAddedMessage(todoTask) + "\n" + ui.taskQuantityMessage(tasks);
-            } else if (input.startsWith("deadline")) {
-                DeadlineTask deadlineTask = new DeadlineTask(Parser.getDeadlineDescription(input),
+            }
+
+            case DEADLINE: {
+                DeadlineTask deadlineTask = new DeadlineTask(
+                        Parser.getDeadlineDescription(input),
                         Parser.getDeadlineDue(input));
                 tasks.addTask(deadlineTask);
-
                 return ui.taskAddedMessage(deadlineTask) + "\n" + ui.taskQuantityMessage(tasks);
-            } else if (input.startsWith("event")) {
-                String description = Parser.getEventDescription(input);
-                String from = Parser.getEventFrom(input);
-                String to = Parser.getEventTo(input);
-                EventTask eventTask = new EventTask(description, from, to);
+            }
 
+            case EVENT: {
+                EventTask eventTask = new EventTask(
+                        Parser.getEventDescription(input),
+                        Parser.getEventFrom(input),
+                        Parser.getEventTo(input));
                 tasks.addTask(eventTask);
                 return ui.taskAddedMessage(eventTask) + "\n" + ui.taskQuantityMessage(tasks);
-            } else if (input.matches("delete \\d+")) {
+            }
+
+            case DELETE: {
                 int number = Parser.getNumber(input);
                 Task deletedTask = tasks.deleteTask(number);
-
                 return ui.taskDeletedMessage(deletedTask);
-            } else if (input.startsWith("find")) {
+            }
+
+            case FIND: {
                 String filter = Parser.getFindFilter(input);
                 return ui.listFilteredTasksMessage(tasks.filterTasksBy(filter));
-            } else {
+            }
+
+            default:
                 throw new MipException("I have no idea what you are talking about...");
             }
         } catch (MipException e) {
@@ -93,4 +108,5 @@ public class Mip {
             storage.saveTasks(tasks);
         }
     }
+
 }

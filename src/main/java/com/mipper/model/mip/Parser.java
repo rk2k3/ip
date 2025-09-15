@@ -1,6 +1,45 @@
 package com.mipper.model.mip;
 
 public class Parser {
+
+    public enum CommandType {
+        BYE,
+        LIST,
+        MARK,
+        UNMARK,
+        TODO,
+        DEADLINE,
+        EVENT,
+        DELETE,
+        FIND,
+        EMPTY,
+        UNKNOWN
+    }
+
+    public static CommandType getCommandType(String input) {
+        if (input == null || input.isEmpty()) {
+            return CommandType.EMPTY;
+        } else if (input.equals("bye")) {
+            return CommandType.BYE;
+        } else if (input.equals("list")) {
+            return CommandType.LIST;
+        } else if (input.matches("mark \\d+")) {
+            return CommandType.MARK;
+        } else if (input.matches("unmark \\d+")) {
+            return CommandType.UNMARK;
+        } else if (input.startsWith("todo")) {
+            return CommandType.TODO;
+        } else if (input.startsWith("deadline")) {
+            return CommandType.DEADLINE;
+        } else if (input.startsWith("event")) {
+            return CommandType.EVENT;
+        } else if (input.matches("delete \\d+")) {
+            return CommandType.DELETE;
+        } else if (input.startsWith("find")) {
+            return CommandType.FIND;
+        }
+        return CommandType.UNKNOWN;
+    }
     
     /**
      * Extracts singular number from a command and returns the int value.
