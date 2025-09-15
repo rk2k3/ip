@@ -67,6 +67,12 @@ public class Parser {
         return number;
     }
 
+    /**
+     * Extracts the filter keyword from a find command
+     *
+     * @param command string command that starts with "find "
+     * @return filter keyword
+     */
     public static String getFindFilter(String command) {
         String rest = command.substring(5);
         return rest;
