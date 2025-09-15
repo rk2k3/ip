@@ -38,7 +38,7 @@ public class Ui {
 
     public String listTasksMessage(TaskList tasks) {
         if (tasks.isEmpty()) {
-            return "Your task list is empty.";
+            return "Your task list is empty. Congrats!";
         }
 
         String tasksString = "";
@@ -70,6 +70,6 @@ public class Ui {
     }
 
     public String emptyInputMessage() {
-        return "Your message is empty.";
+        return "Your message is empty. why u not saying anything";
     }
 }
