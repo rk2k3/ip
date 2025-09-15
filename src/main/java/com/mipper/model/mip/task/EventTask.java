@@ -109,7 +109,7 @@ public class EventTask extends Task {
      *
      * @return the raw from string
      */
-    public String getFrom() {
+    public String getRawStart() {
         return rawStart;
     }
 
@@ -118,7 +118,7 @@ public class EventTask extends Task {
      *
      * @return the raw to string
      */
-    public String getTo() {
+    public String getRawEnd() {
         return rawEnd;
     }
 }

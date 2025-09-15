@@ -120,7 +120,7 @@ public class Storage {
                 } else if (t instanceof EventTask) {
                     EventTask et = (EventTask) t;
                     line = String.format("E | %d | %s | %s | %s", et.isCompleted() ? 1 : 0,
-                            et.getTask(), et.getFrom(), et.getTo());
+                            et.getTask(), et.getRawStart(), et.getRawEnd());
                 }
 
                 // Writes the line into the file and add a line separator
