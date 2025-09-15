@@ -44,7 +44,7 @@ public class Mip {
      * The input is parsed into a Parser.CommandType and handled through
      * a switch statement. Depending on the command, this may manipulate the
      * TaskList, query tasks, or return system messages.
-     * All changes to the task list are persisted via {@link Storage#saveTasks}.
+     * All changes to the task list are persisted via storage - saveTasks.
      *
      * @param input the user command string
      * @return the response message to be shown to the user
@@ -95,8 +95,8 @@ public class Mip {
             case EVENT: {
                 EventTask eventTask = new EventTask(
                         Parser.getEventDescription(input),
-                        Parser.getEventFrom(input),
-                        Parser.getEventTo(input));
+                        Parser.getEventStart(input),
+                        Parser.getEventEnd(input));
                 tasks.addTask(eventTask);
                 return ui.taskAddedMessage(eventTask) + "\n" + ui.taskQuantityMessage(tasks);
             }

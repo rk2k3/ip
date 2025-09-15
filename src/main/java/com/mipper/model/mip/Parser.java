@@ -134,8 +134,7 @@ public class Parser {
     }
 
     /**
-     * Returns string array containing the description, from, and to of a command
-     * that starts with "event "
+     * Returns string array containing the description, start, end of a create EventTask command
      *
      * @param command string command that starts with "event "
      * @return string array of components of command: description, from, and to
@@ -158,12 +157,12 @@ public class Parser {
             throw new MipException("An event must have '/to' followed by end time.");
         }
 
-        // returns: [task description, from, to]
+        // returns: [description, start, end]
         return new String[] { parts1[0].trim(), parts2[0].trim(), parts2[1].trim() };
     }
 
     /**
-     * Returns description from command that starts with "event "
+     * Returns "description" portion of a create EventTask command
      *
      * @param command string command that starts with "event "
      * @return description of event task
@@ -173,11 +172,25 @@ public class Parser {
         return  splitEventCommand(command)[0];
     }
 
-    public static String getEventFrom(String command) throws MipException {
+    /**
+     * Returns the start portion of a create EventTask command.
+     *
+     * @param command the string command that starts with "event "
+     * @return the start time or date of the event task
+     * @throws MipException if the description is empty or invalid
+     */
+    public static String getEventStart(String command) throws MipException {
         return splitEventCommand(command)[1];
     }
 
-    public static String getEventTo(String command) throws MipException {
+    /**
+     * Returns the end portion of a create EventTask command.
+     *
+     * @param command the string command that starts with "event "
+     * @return the end time or date of the event task
+     * @throws MipException if the description is empty or invalid
+     */
+    public static String getEventEnd(String command) throws MipException {
         return splitEventCommand(command)[2];
     }
 }
