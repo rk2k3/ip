@@ -1,7 +1,10 @@
 package com.mipper.model.mip;
 
 public class Parser {
-
+    /**
+     * Represents the different types of commands that can be issued by the user.
+     * Each value corresponds to a specific operation that Mip can handle.
+     */
     public enum CommandType {
         BYE,
         LIST,
@@ -16,6 +19,14 @@ public class Parser {
         UNKNOWN
     }
 
+    /**
+     * Determines the type of command from a raw user input string.
+     * Matches the input against known command patterns and returns the
+     * corresponding CommandType. If no match is found, returns UNKNOWN.
+     *
+     * @param input the raw user input string
+     * @return the CommandType corresponding to the input
+     */
     public static CommandType getCommandType(String input) {
         if (input == null || input.isEmpty()) {
             return CommandType.EMPTY;

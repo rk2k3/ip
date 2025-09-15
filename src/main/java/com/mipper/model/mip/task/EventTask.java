@@ -18,6 +18,15 @@ public class EventTask extends Task {
     private static final DateTimeFormatter OUTPUT_FORMAT =
             DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
 
+    /**
+     * Constructs an EventTask with the given description, start, and end times.
+     * Attempts to parse the from and to strings as full datetimes first, then
+     * as dates. If both fail, the original raw input strings are stored.
+     *
+     * @param task the description of the task
+     * @param from the raw start time string entered by the user
+     * @param to the raw end time string entered by the user
+     */
     public EventTask(String task, String from, String to) {
         super(task);
 
@@ -49,6 +58,13 @@ public class EventTask extends Task {
         }
     }
 
+    /**
+     * Returns a string representation of the event task. If the start and end
+     * times were successfully parsed, they are formatted nicely; otherwise, the
+     * raw input strings are shown.
+     *
+     * @return formatted string representing the task
+     */
     @Override
     public String toString() {
         String fromStr = (fromDateTime != null) ? fromDateTime.format(OUTPUT_FORMAT) : rawFrom;
@@ -56,10 +72,20 @@ public class EventTask extends Task {
         return "[E]" + super.toString() + " (from: " + fromStr + " to: " + toStr + ")";
     }
 
+    /**
+     * Returns the original raw start time string entered by the user.
+     *
+     * @return the raw from string
+     */
     public String getFrom() {
         return rawFrom;
     }
 
+    /**
+     * Returns the original raw end time string entered by the user.
+     *
+     * @return the raw to string
+     */
     public String getTo() {
         return rawTo;
     }

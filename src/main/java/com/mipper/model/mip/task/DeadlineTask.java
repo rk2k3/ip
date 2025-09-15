@@ -15,6 +15,14 @@ public class DeadlineTask extends Task {
     private static final DateTimeFormatter OUTPUT_FORMAT =
             DateTimeFormatter.ofPattern("MMM dd yyyy, h:mma");
 
+    /**
+     * Constructs a DeadlineTask with the given description and deadline.
+     * Attempts to parse the deadline string as a full datetime first, then
+     * as a date. If both fail, the deadline is stored as raw text.
+     *
+     * @param task the description of the task
+     * @param deadlineStr the raw deadline string entered by the user
+     */
     public DeadlineTask(String task, String deadlineStr) {
         super(task);
         this.rawDeadline = deadlineStr;
@@ -33,6 +41,13 @@ public class DeadlineTask extends Task {
         }
     }
 
+    /**
+     * Returns a string representation of the deadline task.
+     * If the deadline was successfully parsed, it is formatted nicely;
+     * otherwise, the raw input string is shown.
+     *
+     * @return formatted string representing the task
+     */
     @Override
     public String toString() {
         if (deadline != null) {
@@ -44,6 +59,11 @@ public class DeadlineTask extends Task {
         }
     }
 
+    /**
+     * Returns the original raw deadline string entered by the user.
+     *
+     * @return the raw deadline string
+     */
     public String getDeadline() {
         return rawDeadline;
     }

@@ -31,11 +31,24 @@ public class Mip {
         this("data/tasks.txt"); // Default filepath for empty constructor
     }
 
+    /**
+     * Returns Mip's greeting message
+     */
     public String greeting() {
         return ui.greeting();
     }
 
-    // Used Chatgpt to refactor to use switch statements instead of if-else
+    // Header comment and switch statements refactored using ChatGPT
+    /**
+     * Processes a user input string and returns the appropriate response message.
+     * The input is parsed into a Parser.CommandType and handled through
+     * a switch statement. Depending on the command, this may manipulate the
+     * TaskList, query tasks, or return system messages.
+     * All changes to the task list are persisted via {@link Storage#saveTasks}.
+     *
+     * @param input the user command string
+     * @return the response message to be shown to the user
+     */
     public String getResponse(String input) {
         Parser.CommandType command = Parser.getCommandType(input);
         try {

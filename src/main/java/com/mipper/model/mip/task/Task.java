@@ -1,42 +1,69 @@
 package com.mipper.model.mip.task;
 
-public class Task {
+public abstract class Task {
     private boolean completed = false;
     private String task;
-    private static int count = 0;
-
 
     public Task(String task) {
         this.task = task;
-        count++;
     }
 
+    /**
+     * Returns a visual representation of the task's completion status.
+     *
+     * @return "[X]" if the task is completed, "[ ]" otherwise
+     */
     public String getCompletionStatusIcon() {
         return (completed ? "[X]" : "[ ]");
     }
 
+    /**
+     * Returns the description of the task.
+     *
+     * @return the task description
+     */
     public String getTask() {
         return task;
     }
 
+    /**
+     * Returns a string representation of the task including
+     * its completion status.
+     *
+     * @return formatted string representing the task
+     */
     @Override
     public String toString() {
         String completionSymbol = this.getCompletionStatusIcon();
         return completionSymbol + " " + task;
     }
 
+    /**
+     * Checks whether the task is marked as completed.
+     *
+     * @return true if the task is completed, false otherwise
+     */
     public boolean isCompleted() {
         return completed;
     }
 
+    /**
+     * Sets the completion status of the task.
+     *
+     * @param completed true to mark the task as completed, false to mark it as not completed
+     */
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
+    /**
+     * Checks equality between this task and another object.
+     * Two tasks are considered equal if they are of the same class
+     * and their string representations are equal.
+     *
+     * @param o the object to compare with
+     * @return true if the objects are equal, false otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {

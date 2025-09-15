@@ -68,26 +68,52 @@ public class TaskList {
         tasks.add(task);
     }
 
+    /**
+     * Returns a list of tasks whose descriptions contain the given string.
+     *
+     * @param desc the substring to filter tasks by
+     * @return a list of tasks matching the filter
+     */
     public List<Task> filterTasksBy(String desc) {
         List<Task> filtered = tasks.stream()
                 .filter(task -> task.getTask().contains(desc))
                 .collect(Collectors.toList());
-
         return filtered;
     }
 
+    /**
+     * Returns the internal list of tasks.
+     *
+     * @return the list of tasks
+     */
     public ArrayList<Task> getTasks() {
         return tasks;
     }
 
+    /**
+     * Returns the task at the given 1-based index.
+     *
+     * @param number the 1-based index of the task
+     * @return the task at the specified index
+     */
     public Task getTask(int number) {
         return tasks.get(number - 1);
     }
 
+    /**
+     * Checks whether the task list is empty.
+     *
+     * @return true if the list contains no tasks, false otherwise
+     */
     public boolean isEmpty() {
         return tasks.isEmpty();
     }
 
+    /**
+     * Returns the number of tasks in the list.
+     *
+     * @return the size of the task list
+     */
     public int size() {
         return tasks.size();
     }

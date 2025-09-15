@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import com.mipper.model.mip.MipException;
 import com.mipper.model.mip.task.Task;
 import com.mipper.model.mip.task.TaskList;
+import com.mipper.model.mip.task.TodoTask;
 
 public class TaskListTest {
 
@@ -15,7 +16,7 @@ public class TaskListTest {
     public void addTask_task_arrayListIncrease() {
         TaskList taskList = new TaskList(new ArrayList<>());
         try {
-            taskList.addTask(new Task("test"));
+            taskList.addTask(new TodoTask("test"));
         } catch (MipException e) {
             fail();
         }
@@ -25,7 +26,7 @@ public class TaskListTest {
     @Test
     public void deleteTask_number_arrayListDecrease() {
         ArrayList<Task> al = new ArrayList<>();
-        al.add(new Task("test"));
+        al.add(new TodoTask("test"));
         TaskList taskList = new TaskList(al);
         taskList.deleteTask(1);
         assertEquals(0, taskList.size());
