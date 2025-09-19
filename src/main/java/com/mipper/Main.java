@@ -25,6 +25,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Mip");
             fxmlLoader.<MainWindow>getController().setMip(mip);  // inject the Duke instance
             fxmlLoader.<MainWindow>getController().greetUser();
             stage.show();

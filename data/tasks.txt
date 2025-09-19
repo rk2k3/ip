@@ -1,4 +1,4 @@
-T | 0 | eat burger
 T | 0 | do something
-T | 0 | chicken burger
-T | 1 | do something
+D | 0 | submit report | 18/11/2025
+E | 0 | dinner party | 19/10/2025 1200 | 19/11/2025 1800
+D | 0 | create draft | 18/12/2025
