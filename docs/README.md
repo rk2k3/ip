@@ -124,15 +124,19 @@ Searches for tasks containing the given keyword.
 
 **Format:** `find KEYWORD`  
 **Example:**
-
+    
     > find report
     1. [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
 
 ## Handling invalid input
 
 - If you enter an empty command, Mip will remind you to type something.
-- If you type an invalid command, Mip will respond with:
+- If you type an invalid command, Mip will comment on it.
 
+**Example:**
+    
+    >
+    Your message is empty. why u not saying anything
 
     > unknown command
     I have no idea what you are talking about...
