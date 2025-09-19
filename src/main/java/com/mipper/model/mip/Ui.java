@@ -90,7 +90,7 @@ public class Ui {
         String tasksString = "";
         ArrayList<Task> list = tasks.getTasks();
         for (int i = 0; i < list.size(); i++) {
-            tasksString = tasksString + (i + 1) + "." + list.get(i) + "\n";
+            tasksString = tasksString + (i + 1) + ". " + list.get(i) + "\n";
         }
         return tasksString;
     }
@@ -107,7 +107,7 @@ public class Ui {
         } else {
             String tasksString = "";
             for (int i = 0; i < tasks.size(); i++) {
-                tasksString = tasksString + (i + 1) + "." + tasks.get(i) + "\n";
+                tasksString = tasksString + (i + 1) + ". " + tasks.get(i) + "\n";
             }
             return tasksString;
         }

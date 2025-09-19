@@ -30,7 +30,12 @@ public class TaskList {
      *
      * @param number index of task to mark as completed
      */
-    public void markTask(int number) {
+    public void markTask(int number) throws MipException {
+        if (tasks.size() < number) {
+            throw new MipException("Index is too big! you only have " + tasks.size() + " tasks");
+        } else if (number < 1) {
+            throw new MipException("Index must be greater than 0");
+        }
         tasks.get(number - 1).setCompleted(true);
     }
 
@@ -39,7 +44,12 @@ public class TaskList {
      *
      * @param number index of task to mark as not completed
      */
-    public void unmarkTask(int number) {
+    public void unmarkTask(int number) throws MipException {
+        if (tasks.size() < number) {
+            throw new MipException("Index is too big! you only have " + tasks.size() + " tasks");
+        } else if (number < 1) {
+            throw new MipException("Index must be greater than 0");
+        }
         tasks.get(number - 1).setCompleted(false);
     }
 
@@ -48,7 +58,12 @@ public class TaskList {
      *
      * @param number index of task to delete
      */
-    public Task deleteTask(int number) {
+    public Task deleteTask(int number) throws MipException {
+        if (tasks.size() < number) {
+            throw new MipException("Index is too big! you only have " + tasks.size() + " tasks");
+        } else if (number < 1) {
+            throw new MipException("Index must be greater than 0");
+        }
         return tasks.remove(number - 1);
     }
 
@@ -56,7 +71,6 @@ public class TaskList {
      * adds a task to the list
      *
      * @param task to add to list
-     * @return returns true if task is successfully added
      */
     public void addTask(Task task) throws MipException {
         for (Task t : tasks) {
@@ -96,7 +110,12 @@ public class TaskList {
      * @param number the 1-based index of the task
      * @return the task at the specified index
      */
-    public Task getTask(int number) {
+    public Task getTask(int number) throws MipException {
+        if (tasks.size() < number) {
+            throw new MipException("Index is too big! you only have " + tasks.size() + " tasks");
+        } else if (number < 1) {
+            throw new MipException("Index must be greater than 0");
+        }
         return tasks.get(number - 1);
     }
 

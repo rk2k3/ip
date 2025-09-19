@@ -1,6 +1,3 @@
-T | 1 | eat burger
-T | 0 | do something
-T | 0 | chicken burger
-D | 0 | test deadline stuff | today
-D | 0 | testing another | 19/12/2025
-E | 1 | testing | 19/12/2025 | 20/12/2025 1800
+T | 0 | ready book
+T | 0 | Buy Groceries
+D | 0 | Submit report | 2/12/2019 1800

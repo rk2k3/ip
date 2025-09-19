@@ -23,7 +23,6 @@ Shows all tasks currently stored.
 **Example:**
 
     > list
-    Here are the tasks in your list:
     1. [T][ ] Read book
     2. [D][ ] Submit report (by: Sunday 11:59pm)
 
@@ -35,9 +34,9 @@ Adds a task with only a description.
 **Example:**
 
     > todo Buy groceries
-    Got it. I've added this task:
-      [T][ ] Buy groceries
-    Now you have 1 task in the list.
+    Understood, I've added this task:
+    [T][ ] Buy groceries
+    The number of your tasks is: 1
 
 ## Adding a deadline task: `deadline`
 
@@ -52,14 +51,14 @@ Adds a task that must be done by a specific time or date.
 **Examples:**
 
     > deadline Submit report /by 2/12/2019 1800
-    Got it. I've added this task:
-      [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
-    Now you have 2 tasks in the list.
+    Understood, I've added this task:
+    [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
+    The number of your tasks is: 2
 
     > deadline Finish homework /by 2/12/2019
-    Got it. I've added this task:
-      [D][ ] Finish homework (by: Dec 02 2019, 11:59PM)
-    Now you have 3 tasks in the list.
+    Understood, I've added this task:
+    [D][ ] Finish homework (by: Dec 02 2019, 11:59PM)
+    The number of your tasks is: 3
 
 ## Adding an event task: `event`
 
@@ -77,14 +76,14 @@ Adds a task that happens within a time range.
 **Examples:**
 
     > event Team meeting /from 2/12/2019 1400 /to 2/12/2019 1600
-    Got it. I've added this task:
-      [E][ ] Team meeting (from: Dec 02 2019, 2:00PM to: Dec 02 2019, 4:00PM)
-    Now you have 4 tasks in the list.
+    Understood, I've added this task:
+    [E][ ] Team meeting (from: Dec 02 2019, 2:00PM to: Dec 02 2019, 4:00PM)
+    The number of your tasks is: 4
 
     > event Party /from 2/12/2019 /to 3/12/2019
-    Got it. I've added this task:
-      [E][ ] Party (from: Dec 02 2019, 12:00AM to: Dec 03 2019, 11:59PM)
-    Now you have 5 tasks in the list.
+    Understood, I've added this task:
+    [E][ ] Party (from: Dec 02 2019, 12:00AM to: Dec 03 2019, 11:59PM)
+    The number of your tasks is: 5
 
 ## Marking a task as done: `mark`
 
@@ -94,8 +93,8 @@ Marks the specified task as done.
 **Example:**
 
     > mark 1
-    Nice! I've marked this task as done:
-      [T][X] Buy groceries
+    Understood, I've marked this task as done
+    [T][X] Buy groceries
 
 ## Unmarking a task: `unmark`
 
@@ -105,8 +104,8 @@ Marks the specified task as **not** done.
 **Example:**
 
     > unmark 1
-    OK, I've marked this task as not done yet:
-      [T][ ] Buy groceries
+    Understood, I've unmarked this task
+    [T][ ] Buy groceries
 
 ## Deleting a task: `delete`
 
@@ -116,9 +115,8 @@ Deletes the specified task.
 **Example:**
 
     > delete 2
-    Noted. I've removed this task:
-      [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
-    Now you have 4 tasks in the list.
+    Understood, I've deleted this task:
+    [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
 
 ## Finding tasks: `find`
 
@@ -128,7 +126,6 @@ Searches for tasks containing the given keyword.
 **Example:**
 
     > find report
-    Here are the matching tasks in your list:
     1. [D][ ] Submit report (by: Dec 02 2019, 6:00PM)
 
 ## Handling invalid input
@@ -136,8 +133,9 @@ Searches for tasks containing the given keyword.
 - If you enter an empty command, Mip will remind you to type something.
 - If you type an invalid command, Mip will respond with:
 
-  > unknowncommand
-  I have no idea what you are talking about...
+
+    > unknown command
+    I have no idea what you are talking about...
 
 ---
 

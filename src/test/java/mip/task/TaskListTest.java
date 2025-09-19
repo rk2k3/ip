@@ -28,7 +28,11 @@ public class TaskListTest {
         ArrayList<Task> al = new ArrayList<>();
         al.add(new TodoTask("test"));
         TaskList taskList = new TaskList(al);
-        taskList.deleteTask(1);
-        assertEquals(0, taskList.size());
+        try {
+            taskList.deleteTask(1);
+            assertEquals(0, taskList.size());
+        } catch (MipException e) {
+            fail();
+        }
     }
 }
